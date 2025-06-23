@@ -59,7 +59,7 @@ const Home = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          Join Innate Gamma Talent Scan
+          Join Talent Unlocked
         </motion.h2>
 
         <div className="col-span-full md:col-span-1">

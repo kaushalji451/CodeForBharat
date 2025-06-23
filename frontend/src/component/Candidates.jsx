@@ -256,6 +256,7 @@ const Candidates = ({ status, totalCandidate, onUploadSuccess }) => {
                       <Link
                         to={candidate.cvUrl}
                         onClick={(e) => e.stopPropagation()}
+                        target="_blank"
                         className="border px-2 py-1 text-sm rounded-sm border-slate-400"
                       >
                         View CV

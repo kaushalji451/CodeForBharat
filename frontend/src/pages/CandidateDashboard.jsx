@@ -3,6 +3,8 @@ import "../candidateDashboard.css";
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import EditCandidateBySelf from "../component/EditCandidateBySelf";
+import ViewCandidateQ from "../component/ViewCandidateQ"
+
 const CandidateDashboard = () => {
   let location = useLocation();
   let userid = location.state.id;
@@ -14,6 +16,7 @@ const CandidateDashboard = () => {
       `${import.meta.env.VITE_API_URL}/candidates/${userid}`
     );
     let result = await data.json();
+    console.log(result);
     setcandidate(result);
   };
 
@@ -128,10 +131,51 @@ const CandidateDashboard = () => {
               </li>
                <li className="flex justify-between items-center bg-white rounded-lg p-4 shadow-sm hover:bg-blue-100 hover:shadow-md transition-all cursor-default select-text">
                 <span className="font-semibold text-gray-600">Resume:</span>
-                <a href={candidate.cvUrl} className="inline-block px-5 py-1 rounded-full font-semibold text-white select-none bg-blue-600">
+                <a href={candidate.cvUrl} target="_blank" className="inline-block px-5 py-1 rounded-full font-semibold text-white select-none bg-blue-600">
                   View
                 </a>
               </li>
+            </ul>
+          </section>
+          <section
+            aria-label="Candidate Information"
+            className="bg-blue-50 rounded-xl p-8 shadow-md mb-10 animate-fadeInUp animation-delay-300"
+          >
+            <h2 className="text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-blue-500 select-none mb-6">
+              Your Score Details
+            </h2>
+            <ul className="space-y-4">
+              <li className="flex justify-between items-center bg-white rounded-lg p-4 shadow-sm hover:bg-blue-100 hover:shadow-md transition-all cursor-default select-text">
+                <span className="font-semibold text-gray-600">Total Questions</span>
+                <span className="text-blue-700 max-w-[60%] truncate">
+                  {candidate.score.totalQuestion}
+                </span>
+              </li>
+              <li className="flex justify-between items-center bg-white rounded-lg p-4 shadow-sm hover:bg-blue-100 hover:shadow-md transition-all cursor-default select-text">
+                <span className="font-semibold text-gray-600">Correct Answers</span>
+                <span className="text-blue-700 max-w-[60%] truncate">
+                  {candidate.score.correctAnswer}
+                </span>
+              </li>
+              <li className="flex justify-between items-center bg-white rounded-lg p-4 shadow-sm hover:bg-blue-100 hover:shadow-md transition-all cursor-default select-text">
+                <span className="font-semibold text-gray-600">Score in Presentage</span>
+                <span className="text-blue-700 max-w-[60%] truncate">
+                  {candidate.score.percentage}%
+                </span>
+              </li>
+              <li className="flex justify-between items-center bg-white rounded-lg p-4 shadow-sm hover:bg-blue-100 hover:shadow-md transition-all cursor-default select-text">
+                <span className="font-semibold text-gray-600">View Result In Details</span>
+                <span className="text-blue-700 max-w-[60%] truncate cursor-pointer">
+                   <ViewCandidateQ selectedAnswers={candidate.score.selectedAnswers} userId={candidate._id}/>
+                </span>
+              </li>
+            
+              
+              
+              
+
+
+
             </ul>
           </section>
         </div>

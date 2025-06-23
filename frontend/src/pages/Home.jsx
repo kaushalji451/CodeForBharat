@@ -30,7 +30,7 @@ export default function LandingPage() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6 }}
         >
-          Welcome to Innate Gamma
+          Welcome to Talent Unlocked
         </motion.h1>
         <motion.p
           className="text-lg md:text-xl mb-8 text-gray-600"
@@ -59,7 +59,7 @@ export default function LandingPage() {
 
       {/* Footer */}
       <footer className="text-center py-6 border-t text-sm text-gray-500">
-        © 2025 Innate Gamma — Your Career, Elevated.
+        © 2025 Talent Unlocked — Your Career, Elevated.
       </footer>
     </div>
   );
